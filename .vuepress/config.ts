@@ -1,9 +1,10 @@
 import { defineUserConfig } from 'vuepress';
 import recoTheme from 'vuepress-theme-reco';
-import katex from 'markdown-it-katex';
-import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
-import { seoPlugin } from 'vuepress-plugin-seo2';
-import { sitemapPlugin } from 'vuepress-plugin-sitemap2';
+// import katex from 'markdown-it-katex';
+// import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
+// import { seoPlugin } from 'vuepress-plugin-seo2';
+// import { sitemapPlugin } from 'vuepress-plugin-sitemap2';
+import { viteBundler } from '@vuepress/bundler-vite';
 
 const hostname = 'https://blog.yixiangzhilv.com';
 
@@ -22,6 +23,7 @@ export default defineUserConfig({
     ],
   ],
   lang: 'zh-CN',
+  bundler: viteBundler(),
   theme: recoTheme({
     style: '@vuepress-reco/style-default',
     logo: '/logo.png',
@@ -96,24 +98,24 @@ export default defineUserConfig({
     //   ],
     // },
   }),
-  plugins: [
-    googleAnalyticsPlugin({
-      id: 'G-YNWN3VVCTL',
-    }),
-    seoPlugin({
-      hostname: hostname,
-      author: {
-        name: '异想之旅王子',
-        email: 'mail@yixiangzhilv.com',
-      },
-    }),
-    sitemapPlugin({
-      hostname: hostname,
-      changefreq: 'weekly',
-    }),
-      ],
-  extendsMarkdown: md => {
-    md.set({ html: true });
-    md.use(katex);
-  },
+  //   plugins: [
+  //     googleAnalyticsPlugin({
+  //       id: 'G-YNWN3VVCTL',
+  //     }),
+  //     seoPlugin({
+  //       hostname: hostname,
+  //       author: {
+  //         name: '异想之旅王子',
+  //         email: 'mail@yixiangzhilv.com',
+  //       },
+  //     }),
+  //     sitemapPlugin({
+  //       hostname: hostname,
+  //       changefreq: 'weekly',
+  //     }),
+  //       ],
+  //   extendsMarkdown: md => {
+  //     md.set({ html: true });
+  //     md.use(katex);
+  //   },
 });
